@@ -20,6 +20,8 @@ This package offers a mock ``pyldap`` library that can be used
 for testing code relying on ``pyldap`` without having to configure 
 and populate a real directory server.
 
+It's been forked from [dataflake] 
+(https://github.com/dataflake/dataflake.fakeldap) for Addepar.
 
 Documentation
 =============
