@@ -17,7 +17,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-NAME = 'dataflake.fakeldap'
+NAME = 'dataflake.fakeldap-addepar'
 
 
 def read(*rnames):
