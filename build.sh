@@ -4,13 +4,13 @@
 package=dataflake.fakeldap-addepar
 version=$(cat version.txt)
 
-if [ -z "$PACKAGECLOUD_KEY" ]; then
-  echo 'Cannot release: $PACKAGE_CLOUD_KEY must be set'
+if [ -z "$PACKAGECLOUD_TOKEN" ]; then
+  echo 'Cannot release: $PACKAGECLOUD_TOKEN must be set'
   exit 1
 fi
 
 repository='altx/addepar'
-packagecloud="https://$PACKAGE_CLOUD_KEY:@packagecloud.io"
+packagecloud="https://$PACKAGECLOUD_TOKEN:@packagecloud.io"
 endpoint="api/v1/repos/$repository/packages.json"
 
 # see https://git-scm.com/docs/git-sh-setup
