@@ -38,7 +38,7 @@ fi
 python_dist_type_id=166
 normed_pkg_name="$(echo $package | tr - _)"
 
-echo curl -X POST "$packagecloud/$endpoint" \
+curl -X POST "$packagecloud/$endpoint" \
   -F "package[distro_version_id]=$python_dist_type_id" \
   -F "package[package_file]=@dist/$normed_pkg_name-$version-$format" \
   --progress-bar | tee /dev/null
