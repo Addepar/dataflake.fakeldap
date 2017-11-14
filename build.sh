@@ -34,6 +34,14 @@ if [[ $? != 0 ]]; then
   exit 1
 fi
 
+echo "release $package $version? (y/n): "
+read confirmed
+
+if [ "$confirmed" != 'y' ]; then
+  echo "ABORTING" >&2
+  exit 0
+fi
+
 # see https://blog.packagecloud.io/eng/2016/03/28/pushing-packages-to-packagecloud/
 python_dist_type_id=166
 normed_pkg_name="$(echo $package | tr - _)"
