@@ -18,7 +18,7 @@ source "$(git --exec-path)/git-sh-setup"
 
 hint='Please commit or stash them.'
 
-#require_clean_work_tree 'release' "$hint"
+require_clean_work_tree 'release' "$hint"
 
 if [[ ! -z "$(git ls-files --exclude-standard --others)" ]]; then
     echo 'Cannot release: You have untracked files.' >&2
