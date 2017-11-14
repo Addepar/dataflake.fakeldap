@@ -4,7 +4,7 @@
 package=dataflake.fakeldap-addepar
 version=$(cat version.txt)
 
-if [ -z "$PACKAGE_CLOUD_KEY" ]; then
+if [ -z "$PACKAGECLOUD_KEY" ]; then
   echo 'Cannot release: $PACKAGE_CLOUD_KEY must be set'
   exit 1
 fi
