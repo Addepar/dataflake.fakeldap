@@ -38,9 +38,9 @@ Building and Deploying
 ======================
 
 Requirements:
-  - A Packagecloud.io key with Environment variable set to it, such as PACKAGE_CLOUD_KEY="PACKAGECLOUDKEY"
+  - A Packagecloud.io key with Environment variable set to it, such as package_cloud_key="packagecloudkey"
   - A clean branch
 
 To package and publish to PackageCloud
 ======================================
-Run build.sh
+Run `build.sh`
