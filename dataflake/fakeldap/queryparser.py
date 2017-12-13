@@ -50,7 +50,7 @@ _FLTR = br'\(\w*?=[\*\w\s=,\\]*?\)'
 _OP = b'[&\|\!]{1}'
 
 FLTR = (br'\((?P<attr>\w*?)(?P<comp>=)' +
-        b'(?P<value>[\*\w\s=,\\\'@\-\+_\.^\W\d_]*?)\)(?P<fltr>.*)')
+        b'(?P<value>[\*\w\s=,\\\'@\-\+_\.^\W\d_]*?)\)')
 
 FLTR_RE = re.compile(FLTR.decode(), re.UNICODE)
 
