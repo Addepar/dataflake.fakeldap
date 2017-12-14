@@ -103,6 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# dataflake.fakeldap
+# mr.developer.cfg
 .mr.developer.cfg
 
