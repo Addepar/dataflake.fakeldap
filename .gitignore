@@ -1,13 +1,9 @@
-__pycache__
-.coverage
-.installed.cfg
-.mr.developer.cfg
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
+.mr.developer.cfg
+ 
 # C extensions
 *.so
 
