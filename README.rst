@@ -18,26 +18,25 @@
 ====================
 This package offers a mock ``pyldap`` library that can be used for testing code relying on ``pyldap`` without having to configure and populate a real directory server.
 
-It's been forked from `dataflake <https://github.com/dataflake/dataflake.fakeldap>` for Addepar.
+It's been forked from `dataflake <https://github.com/dataflake/dataflake.fakeldap>`_ for Addepar.
 
 Documentation
 =============
-Full documentation is available at
-https://dataflakefakeldap.readthedocs.io/
+Full documentation is available at `readthedocs <https://dataflakefakeldap.readthedocs.io>`_.
 
 
 Bug tracker
 ===========
-A bug tracker is available at
-https://github.com/dataflake/dataflake.fakeldap/issues
+A bug tracker is available `here <https://github.com/dataflake/dataflake.fakeldap/issues>`_.
 
 Building and Deploying
 ======================
 
 Requirements:
-* A packagecloud.io key with an environment variable set to it, such as PACKAGE_CLOUD_KEY="PACKAGECLOUDKEY"
-* A clean worktree
 
-To package and publish to PackageCloud
+- A packagecloud.io key with an environment variable set to it, i.e.: ``PACKAGE_CLOUD_KEY="PACKAGECLOUDKEY"``
+- A clean worktree
+
+Package and publish to PackageCloud
 ======================================
-Run ``build.sh``
+Run ``./build.sh`` (`build.sh <https://github.com/Addepar/dataflake.fakeldap/blob/addepar/master/build.sh>`_)
