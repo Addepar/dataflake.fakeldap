@@ -2,8 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.mr.developer.cfg
- 
+
 # C extensions
 *.so
 
@@ -103,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# dataflake.fakeldap
+.mr.developer.cfg
+
