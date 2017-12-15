@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-package=dataflake.fakeldap-addepar
+package=dataflake.fakeldap_addepar
 version=$(cat version.txt)
 
 if [ -z "$PACKAGE_CLOUD_KEY" ]; then
@@ -38,5 +38,5 @@ python_dist_type_id=166
 
 curl -X POST "$packagecloud/$endpoint" \
   -F "package[distro_version_id]=$python_dist_type_id" \
-  -F "package[package_file]=@dist/$package_$version_$format" \
+  -F "package[package_file]=@dist/$package-$version-$format" \
   --progress-bar | tee /dev/null
