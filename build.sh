@@ -25,7 +25,7 @@ if [[ ! -z "$(git ls-files --exclude-standard --others)" ]]; then
     exit
 fi
 
-format='py2-none-any.whl'
+format='py2.py3-none-any.whl'
 python setup.py bdist_wheel
 
 if [[ $? != 0 ]]; then
