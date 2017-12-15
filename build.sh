@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-package=dataflake.fakeldap-addepar
+package=dataflake.fakeldap_addepar
 version=$(cat version.txt)
 
 if [ -z "$PACKAGE_CLOUD_KEY" ]; then
@@ -25,7 +25,7 @@ if [[ ! -z "$(git ls-files --exclude-standard --others)" ]]; then
     exit
 fi
 
-format='py2-none-any.whl'
+format='py2.py3-none-any.whl'
 python setup.py bdist_wheel
 
 if [[ $? != 0 ]]; then
