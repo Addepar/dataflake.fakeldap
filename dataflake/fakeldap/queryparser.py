@@ -13,13 +13,15 @@
 ##############################################################################
 
 import re
-from six import string_types
+
+import six
 
 from dataflake.fakeldap.op import Op
 from dataflake.fakeldap.queryfilter import Filter
 from dataflake.fakeldap.utils import utf8_string
 
 # From http://www.ietf.org/rfc/rfc2254.txt, Section 4
+# with references to http://www.ietf.org/rfc/rfc2251.txt
 #
 # filter     = "(" filtercomp ")"
 # filtercomp = and / or / not / item
@@ -41,17 +43,17 @@ from dataflake.fakeldap.utils import utf8_string
 # initial    = value
 # any        = "*" *(value "*")
 # final      = value
-# attr       = AttributeDescription from Section 4.1.5 of [1]
-# matchingrule = MatchingRuleId from Section 4.1.9 of [1]
-# value      = AttributeValue from Section 4.1.6 of [1]
+# attr       = AttributeDescription from Section 4.1.5 of RFC 2251
+# matchingrule = MatchingRuleId from Section 4.1.9 of RFC 2251
+# value      = AttributeValue from Section 4.1.6 of RFC 2251
 
 
 _FLTR = br'\(\w*?=[\*\w\s=,\\]*?\)'
 _OP = b'[&\|\!]{1}'
 
 FLTR = (br'\((?P<attr>\w*?)(?P<comp>=)' +
-        b'(?P<value>[\*\w\s=,\\\'@\-\+_\.^\W\d_]*?)\)')
-
+        br'(?P<value>[\*\w\s=,\\\'@\-\+_\.^\W\d_]*?)\)' +
+        b'(?P<fltr>.*)')
 FLTR_RE = re.compile(FLTR.decode(), re.UNICODE)
 
 FULL = b'\((?P<op>(%s))(?P<fltr>.*)\)' % _OP
@@ -85,15 +87,20 @@ class Parser(object):
                     parts.extend(self.parse_query(rest))
                 return tuple(parts)
 
-        # detect py2 <type 'str'> vs py3 <class 'bytes'>
-        decode_needed = not isinstance(query, string_types)
+        # Under Python 3, our regular expression is type <str>, which
+        # does not handle <bytes>. Doing a temporary decode.
+        decode_needed = six.PY3 and isinstance(query, bytes)
         if decode_needed:
-            query = query.decode()
+            query = query.decode('UTF-8')
+
         # Match internal filter.
         d = FLTR_RE.match(query).groupdict()
+
+        # Revert the previous temporary decode
         if decode_needed:
             for k, v in d.items():
-                d[k] = v.encode()
+                d[k] = v.encode('UTF-8')
+
         parts.append(Filter(d['attr'], d['comp'], d['value']))
         if d['fltr']:
             parts.extend(self.parse_query(d['fltr'], recurse=True))
