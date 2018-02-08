@@ -20,6 +20,7 @@ from dataflake.fakeldap.queryfilter import Filter
 from dataflake.fakeldap.utils import utf8_string
 
 # From http://www.ietf.org/rfc/rfc2254.txt, Section 4
+# with references to http://www.ietf.org/rfc/rfc2251.txt
 #
 # filter     = "(" filtercomp ")"
 # filtercomp = and / or / not / item
@@ -50,7 +51,8 @@ _FLTR = br'\(\w*?=[\*\w\s=,\\]*?\)'
 _OP = b'[&\|\!]{1}'
 
 FLTR = (br'\((?P<attr>\w*?)(?P<comp>=)' +
-        b'(?P<value>[\*\w\s=,\\\'@\-\+_\.^\W\d_]*?)\)')
+        br'(?P<value>[\*\w\s=,\\\'@\-\+_\.^\W\d_]*?)\)' +
+        b'(?P<fltr>.*)')
 
 FLTR_RE = re.compile(FLTR.decode(), re.UNICODE)
 
